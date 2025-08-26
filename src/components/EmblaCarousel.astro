@@ -1,0 +1,276 @@
+---
+import { siteConfig } from "../config";
+import { Icon } from "astro-icon/components";
+import ImageWrapper from "../components/misc/ImageWrapper.astro";
+---
+
+<div class="embla-carousel-wrapper" style={`height: ${siteConfig.carousel.height}` }>
+  <div class="embla" id="embla">
+    <div class="embla__viewport">
+      <div class="embla__container">
+        {siteConfig.carousel.slides.map((slide, index) => (
+          <div class="embla__slide">
+            <a href={slide.link} class="slide-link">
+              <div class="slide-image-wrapper">
+                <ImageWrapper src={slide.image} alt={slide.title} class="slide-image" basePath="/" />
+                <div class="slide-overlay">
+                  <div class="slide-content">
+                    <h2 class="slide-title">{slide.title}</h2>
+                    <p class="slide-description">{slide.description}</p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+    
+    {siteConfig.carousel.showArrows && (
+      <>
+        <button class="embla__button embla__button--prev" type="button">
+          <Icon name="material-symbols:chevron-left-rounded" class="embla__button__icon" />
+        </button>
+        <button class="embla__button embla__button--next" type="button">
+          <Icon name="material-symbols:chevron-right-rounded" class="embla__button__icon" />
+        </button>
+      </>
+    )}
+    
+    {siteConfig.carousel.showDots && (
+      <div class="embla__dots"></div>
+    )}
+  </div>
+</div>
+
+<script>
+  import EmblaCarousel from 'embla-carousel';
+  import { siteConfig } from '../config';
+
+  function startEmbla() {
+    const root = document.getElementById('embla') as HTMLElement | null;
+    if (!root) return;
+    const viewport = root.querySelector('.embla__viewport') as HTMLElement | null;
+    if (!viewport) return;
+
+    const options = {
+      loop: siteConfig.carousel.loop,
+      align: 'start' as const,
+      containScroll: 'trimSnaps' as const,
+    };
+
+    const init = (plugins: any[]) => {
+      const embla = EmblaCarousel(viewport as HTMLElement, options, plugins);
+
+      // No special slide class needed for default slide transition
+
+      const prev = root.querySelector('.embla__button--prev');
+      const next = root.querySelector('.embla__button--next');
+      prev?.addEventListener('click', () => embla.scrollPrev());
+      next?.addEventListener('click', () => embla.scrollNext());
+
+      const dotsNode = root.querySelector('.embla__dots');
+      if (dotsNode && siteConfig.carousel.showDots) {
+        const dots: HTMLButtonElement[] = [];
+        const slideCount = embla.slideNodes().length;
+        for (let i = 0; i < slideCount; i++) {
+          const dot = document.createElement('button');
+          dot.className = 'embla__dot';
+          dot.addEventListener('click', () => embla.scrollTo(i));
+          (dotsNode as HTMLElement).appendChild(dot);
+          dots.push(dot);
+        }
+        const setSelected = () => {
+          const selected = embla.selectedScrollSnap();
+          dots.forEach((dot, idx) => dot.classList.toggle('embla__dot--selected', idx === selected));
+        };
+        embla.on('select', setSelected);
+        setSelected();
+      }
+    };
+
+    if (siteConfig.carousel.autoplay) {
+      import('embla-carousel-autoplay')
+        .then((m) => init([m.default({ delay: siteConfig.carousel.autoplaySpeed, stopOnInteraction: false })]))
+        .catch(() => init([]));
+    } else {
+      init([]);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startEmbla, { once: true });
+  } else {
+    startEmbla();
+  }
+</script>
+
+<style>
+  .embla-carousel-wrapper {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .embla {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .embla__viewport {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .embla__container {
+    display: flex;
+    height: 100%;
+  }
+
+  .embla__slide {
+    flex: 0 0 100%;
+    min-width: 0;
+    position: relative;
+  }
+
+  /* Default Embla slide transition uses transform; no extra CSS required */
+
+  .slide-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .slide-image-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .slide-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
+    display: flex;
+    align-items: flex-end;
+    padding: 2rem;
+  }
+
+  .slide-content {
+    color: white;
+    max-width: 600px;
+  }
+
+  .slide-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .slide-description {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  }
+
+  .embla__button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+  }
+
+  .embla__button:hover {
+    background: rgba(255, 255, 255, 0.95);
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  .embla__button--prev {
+    left: 1rem;
+  }
+
+  .embla__button--next {
+    right: 1rem;
+  }
+
+  .embla__button__icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #333;
+  }
+
+  .embla__dots {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 10;
+  }
+
+  .embla__dot {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .embla__dot:hover {
+    background: rgba(255, 255, 255, 0.8);
+  }
+
+  .embla__dot--selected {
+    background: white;
+    transform: scale(1.2);
+  }
+
+  @media (max-width: 768px) {
+    .slide-title {
+      font-size: 1.5rem;
+    }
+    
+    .slide-description {
+      font-size: 1rem;
+    }
+    
+    .embla__button {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+    
+    .embla__button__icon {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+  }
+</style>

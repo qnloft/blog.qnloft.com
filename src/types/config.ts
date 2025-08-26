@@ -20,15 +20,20 @@ export type SiteConfig = {
 		hue: number;
 		fixed: boolean;
 	};
-	banner: {
+	carousel: {
 		enable: boolean;
-		src: string;
-		position?: "top" | "center" | "bottom";
-		credit: {
-			enable: boolean;
-			text: string;
-			url?: string;
-		};
+		height: string;
+		autoplay: boolean;
+		autoplaySpeed: number;
+		showDots: boolean;
+		showArrows: boolean;
+		loop: boolean;
+		slides: {
+			image: string;
+			title: string;
+			description: string;
+			link: string;
+		}[];
 	};
 	toc: {
 		enable: boolean;
