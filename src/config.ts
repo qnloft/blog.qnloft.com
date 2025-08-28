@@ -68,7 +68,8 @@ export const navBarConfig: NavBarConfig = {
 
 export const profileConfig: ProfileConfig = {
 	avatar: "assets/images/demo-avatar.png", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
-	name: "Lorem Ipsum",
+	name: "青柠炸机店",
+	nameImage: "assets/images/qnloft-logo.png", // 新增：名称图片路径
 	bio: "覆盖 **群晖**、**威联通**、**极空间**、**绿联**、**飞牛OS**及**🐳Docker** 提供从入门到精通的实战教程📚",
 	links: [
 		{

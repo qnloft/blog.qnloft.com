@@ -67,7 +67,8 @@ export type NavBarConfig = {
 
 export type ProfileConfig = {
 	avatar?: string;
-	name: string;
+	name: string; // 可以是图片路径或文字
+	nameImage?: string; // 新增：用于显示图片形式的名称
 	bio?: string;
 	links: {
 		name: string;

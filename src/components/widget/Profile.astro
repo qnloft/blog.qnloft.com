@@ -1,7 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import MarkdownIt from "markdown-it";
-import { profileConfig } from "../../config";
+import { profileConfig, siteConfig } from "../../config";
 import { url } from "../../utils/url-utils";
 import ImageWrapper from "../misc/ImageWrapper.astro";
 
@@ -12,9 +12,12 @@ const md = new MarkdownIt({
 	breaks: true,
 });
 const bioHtml = config.bio ? md.render(config.bio) : "";
+
+
+
 ---
-<div class="card-base p-3">
-    <a aria-label="Go to About Page" href={url('/about/')}
+<div class="card-base p-3" style={`height: ${siteConfig.carousel.height}; display: flex; flex-direction: column; justify-content: center;`}>
+    <!-- <a aria-label="Go to About Page" href={url('/about/')}
        class="group block relative mx-auto mt-1 lg:mx-0 lg:mt-0 mb-3
        max-w-[12rem] lg:max-w-none overflow-hidden rounded-xl active:scale-95">
         <div class="absolute transition pointer-events-none group-hover:bg-black/30 group-active:bg-black/50
@@ -24,9 +27,15 @@ const bioHtml = config.bio ? md.render(config.bio) : "";
             </Icon>
         </div>
         <ImageWrapper src={config.avatar || ""} alt="Profile Image of the Author" class="mx-auto lg:w-full h-full lg:mt-0 "></ImageWrapper>
-    </a>
+    </a> -->
     <div class="px-2">
-        <div class="font-bold text-xl text-center mb-1 dark:text-neutral-50 transition">{config.name}</div>
+        {config.nameImage ? (
+            <div class="flex justify-center mb-1">
+                <ImageWrapper src={config.nameImage} alt="Profile Name" class="max-h-12 max-w-full object-contain" position="center"></ImageWrapper>
+            </div>
+        ) : (
+            <div class="font-bold text-xl text-center mb-1 dark:text-neutral-50 transition">{config.name}</div>
+        )}
         <div class="h-1 w-5 bg-[var(--primary)] mx-auto rounded-full mb-2 transition"></div>
         <div class="text-center text-neutral-400 mb-2.5 transition">
             <div class="prose dark:prose-invert prose-sm mx-auto !text-neutral-400" set:html={bioHtml}></div>
