@@ -12,7 +12,7 @@ export const siteConfig: SiteConfig = {
 	subtitle: "专注于为👨‍👩‍👧‍👦家庭与🏢企业打造安全、可控的私有数据中心",
 	lang: "zh_CN", // Language code, e.g. 'en', 'zh_CN', 'ja', etc.
 	themeColor: {
-		hue: 250, // Default hue for the theme color, from 0 to 360. e.g. red: 0, teal: 200, cyan: 250, pink: 345
+		hue: 50, // Default hue for the theme color, from 0 to 360. e.g. red: 0, teal: 200, cyan: 250, pink: 345
 		fixed: false, // Hide the theme color picker for visitors
 	},
 	carousel: {
@@ -28,15 +28,15 @@ export const siteConfig: SiteConfig = {
 				image: "assets/images/demo-banner.png",
 				title: "欢迎来到青柠炸机店",
 				description: "专注于为家庭与企业打造安全、可控的私有数据中心",
-				link: "/about"
+				link: "/about",
 			},
 			{
 				image: "assets/images/demo-avatar.png",
 				title: "技术分享",
 				description: "分享最新的技术资讯和解决方案",
-				link: "/archive"
-			}
-		]
+				link: "/archive",
+			},
+		],
 	},
 	toc: {
 		enable: true, // Display the table of contents on the right side of the post
@@ -68,7 +68,7 @@ export const navBarConfig: NavBarConfig = {
 export const profileConfig: ProfileConfig = {
 	avatar: "assets/images/demo-avatar.png", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
 	name: "Lorem Ipsum",
-	bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+	bio: "覆盖群晖、威联通、极空间、绿联、飞牛OS及🐳Docker 提供从入门到精通的实战教程📚",
 	links: [
 		{
 			name: "Twitter",
@@ -78,13 +78,13 @@ export const profileConfig: ProfileConfig = {
 			url: "https://twitter.com",
 		},
 		{
-			name: "Steam",
-			icon: "fa6-brands:steam",
+			name: "B站",
+			icon: "fa6-brands:bilibili",
 			url: "https://store.steampowered.com",
 		},
 		{
-			name: "GitHub",
-			icon: "fa6-brands:github",
+			name: "公众号",
+			icon: "fa6-brands:weixin",
 			url: "https://github.com/saicaca/fuwari",
 		},
 	],
