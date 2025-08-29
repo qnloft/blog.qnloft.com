@@ -22,6 +22,40 @@ export const siteConfig: SiteConfig = {
 		showIcon: true, // 是否显示图标
 		showText: true, // 是否显示文字
 	},
+	// 广告位配置
+	ads: {
+		enable: true, // 是否启用广告
+		position: "sidebar", // 广告位置：right, left, bottom, sidebar
+		ads: [
+			{
+				id: "ad-1",
+				title: "推荐产品",
+				description: "精选优质产品，值得信赖",
+				image: "assets/images/demo-banner.png",
+				link: "https://example.com",
+				buttonText: "", // 空字符串，按钮将不显示
+				show: true,
+			},
+			{
+				id: "ad-2",
+				title: "技术咨询",
+				description: "专业的技术支持服务",
+				image: "assets/images/demo-avatar.png",
+				link: "https://example.com",
+				buttonText: "立即咨询",
+				show: true,
+			},
+			{
+				id: "ad-3",
+				title: "纯展示广告",
+				description: "这是一个没有按钮的纯展示广告",
+				image: "assets/images/demo-banner.png",
+				link: "https://example.com",
+				// buttonText 字段不存在，按钮将不显示
+				show: true,
+			},
+		],
+	},
 	carousel: {
 		enable: true,
 		height: "260px", // 轮播高度（默认更紧凑）

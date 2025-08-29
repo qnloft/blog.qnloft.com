@@ -26,6 +26,19 @@ export type SiteConfig = {
 		showIcon: boolean;
 		showText: boolean;
 	};
+	ads: {
+		enable: boolean;
+		position: "right" | "left" | "bottom" | "sidebar";
+		ads: {
+			id: string;
+			title: string;
+			description: string;
+			image: string;
+			link: string;
+			buttonText?: string; // 可选字段，为空时不显示按钮
+			show: boolean;
+		}[];
+	};
 	carousel: {
 		enable: boolean;
 		height: string;
