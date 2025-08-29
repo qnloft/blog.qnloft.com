@@ -9,7 +9,9 @@ export function pathsEqual(path1: string, path2: string) {
 
 function joinUrl(...parts: string[]): string {
 	const joined = parts.join("/");
-	return joined.replace(/\/+/g, "/");
+	// 移除末尾斜杠以匹配 trailingSlash: "never" 设置，但保留根路径
+	const normalized = joined.replace(/\/+/g, "/");
+	return normalized === "/" ? "/" : normalized.replace(/\/$/, "");
 }
 
 export function getPostUrlBySlug(slug: string): string {
@@ -23,8 +25,8 @@ export function getPostUrlByEntry(entry: any): string {
 }
 
 export function getTagUrl(tag: string): string {
-	if (!tag) return url("/archive/");
-	return url(`/archive/?tag=${encodeURIComponent(tag.trim())}`);
+	if (!tag) return url("/archive");
+	return url(`/archive?tag=${encodeURIComponent(tag.trim())}`);
 }
 
 export function getCategoryUrl(category: string | null): string {
@@ -33,8 +35,8 @@ export function getCategoryUrl(category: string | null): string {
 		category.trim() === "" ||
 		category.trim().toLowerCase() === i18n(I18nKey.uncategorized).toLowerCase()
 	)
-		return url("/archive/?uncategorized=true");
-	return url(`/archive/?category=${encodeURIComponent(category.trim())}`);
+		return url("/archive?uncategorized=true");
+	return url(`/archive?category=${encodeURIComponent(category.trim())}`);
 }
 
 export function getDir(path: string): string {
@@ -46,5 +48,9 @@ export function getDir(path: string): string {
 }
 
 export function url(path: string) {
+	// 确保根路径正确处理
+	if (path === "/") {
+		return "/";
+	}
 	return joinUrl("", import.meta.env.BASE_URL, path);
 }
