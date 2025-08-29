@@ -2,7 +2,7 @@
 import { Icon } from "astro-icon/components";
 import MarkdownIt from "markdown-it";
 import { profileConfig, siteConfig } from "../../config";
-import { url } from "../../utils/url-utils";
+// import { url } from "../../utils/url-utils";
 import ImageWrapper from "../misc/ImageWrapper.astro";
 
 const config = profileConfig;
@@ -12,9 +12,6 @@ const md = new MarkdownIt({
 	breaks: true,
 });
 const bioHtml = config.bio ? md.render(config.bio) : "";
-
-
-
 ---
 <div class="card-base p-3" style={`height: ${siteConfig.carousel.height}; display: flex; flex-direction: column; justify-content: center;`}>
     <!-- <a aria-label="Go to About Page" href={url('/about/')}
