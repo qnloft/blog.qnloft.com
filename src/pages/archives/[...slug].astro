@@ -6,7 +6,7 @@ import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
 import { getSortedPosts } from "@utils/content-utils";
-import { getDir, getPostUrlBySlug } from "@utils/url-utils";
+import { getDir, getPostUrlByEntry, getPostUrlBySlug } from "@utils/url-utils";
 import { Icon } from "astro-icon/components";
 import { licenseConfig, siteConfig } from "src/config";
 import ImageWrapper from "../../components/misc/ImageWrapper.astro";
@@ -16,10 +16,21 @@ import { formatDateToYYYYMMDD } from "../../utils/date-utils";
 
 export async function getStaticPaths() {
 	const blogEntries = await getSortedPosts();
-	return blogEntries.map((entry) => ({
-		params: { slug: entry.slug },
-		props: { entry },
-	}));
+
+	// 为每篇文章生成路由
+	const paths = [];
+
+	for (const entry of blogEntries) {
+		// 如果设置了自定义链接，使用自定义链接；否则使用文件名
+		const slug = entry.data.customSlug || entry.slug;
+
+		paths.push({
+			params: { slug },
+			props: { entry },
+		});
+	}
+
+	return paths;
 }
 
 const { entry } = Astro.props;

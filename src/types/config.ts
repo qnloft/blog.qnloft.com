@@ -104,6 +104,7 @@ export type BlogPostData = {
 	image?: string;
 	category?: string;
 	pinned?: number; // 置顶标识：0为默认，1为置顶
+	customSlug?: string; // 自定义文章链接
 	prevTitle?: string;
 	prevSlug?: string;
 	nextTitle?: string;

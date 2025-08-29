@@ -12,6 +12,7 @@ const postsCollection = defineCollection({
 		category: z.string().optional().nullable().default(""),
 		lang: z.string().optional().default(""),
 		pinned: z.number().optional().default(0), // 置顶标识：0为默认，1为置顶
+		customSlug: z.string().optional(), // 自定义文章链接，如果不设置则使用文件名
 
 		/* For internal use */
 		prevTitle: z.string().default(""),
