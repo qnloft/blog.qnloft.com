@@ -9,8 +9,7 @@ import { LinkPreset } from "./types/config";
 
 export const siteConfig: SiteConfig = {
 	title: "青柠炸机店-Blog",
-	subtitle:
-		"您的私有云专家：从NAS选购到Docker实战",
+	subtitle: "您的私有云专家：从NAS选购到Docker实战",
 	lang: "zh_CN", // Language code, e.g. 'en', 'zh_CN', 'ja', etc.
 	themeColor: {
 		hue: 50, // Default hue for the theme color, from 0 to 360. e.g. red: 0, teal: 200, cyan: 250, pink: 345
@@ -70,7 +69,7 @@ export const profileConfig: ProfileConfig = {
 	avatar: "assets/images/demo-avatar.png", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
 	name: "青柠炸机店",
 	nameImage: "assets/images/qnloft-logo.png", // 新增：名称图片路径
-	bio: "覆盖 **群晖**、**威联通**、**极空间**、**绿联**、**飞牛OS**及**🐳Docker** 提供从入门到精通的实战教程📚",
+	bio: "📚提供从入门到精通的实战教程📚 <br/>覆盖 **群晖** | **威联通** | **极空间** | **绿联** | **飞牛OS** | **🐳Docker** ",
 	links: [
 		{
 			name: "Twitter",
