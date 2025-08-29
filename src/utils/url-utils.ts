@@ -13,13 +13,13 @@ function joinUrl(...parts: string[]): string {
 }
 
 export function getPostUrlBySlug(slug: string): string {
-	return url(`/archives/${slug}/`);
+	return url(`/archives/${slug}`);
 }
 
 export function getPostUrlByEntry(entry: any): string {
 	// 如果设置了自定义链接，使用自定义链接；否则使用文件名
 	const slug = entry.data.customSlug || entry.slug;
-	return url(`/archives/${slug}/`);
+	return url(`/archives/${slug}`);
 }
 
 export function getTagUrl(tag: string): string {
