@@ -20,6 +20,12 @@ export type SiteConfig = {
 		hue: number;
 		fixed: boolean;
 	};
+	pinned: {
+		icon: string;
+		text: string;
+		showIcon: boolean;
+		showText: boolean;
+	};
 	carousel: {
 		enable: boolean;
 		height: string;
@@ -97,6 +103,7 @@ export type BlogPostData = {
 	draft?: boolean;
 	image?: string;
 	category?: string;
+	pinned?: number; // 置顶标识：0为默认，1为置顶
 	prevTitle?: string;
 	prevSlug?: string;
 	nextTitle?: string;

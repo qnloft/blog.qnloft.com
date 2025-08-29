@@ -2,6 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import path from "node:path";
 import { Icon } from "astro-icon/components";
+import { siteConfig } from "../config";
 import I18nKey from "../i18n/i18nKey";
 import { i18n } from "../i18n/translation";
 import { getDir } from "../utils/url-utils";
@@ -43,6 +44,15 @@ const coverWidth = "28%";
 const { remarkPluginFrontmatter } = await entry.render();
 ---
 <div class:list={["card-base flex flex-col-reverse md:flex-col w-full rounded-[var(--radius-large)] overflow-hidden relative", className]} style={style}>
+    <!-- 置顶标识 -->
+    {entry.data.pinned === 1 && (
+        <div class="absolute top-3 left-3 z-30 bg-[var(--primary)] text-white px-2 py-1 rounded-md text-xs font-medium shadow-md">
+            {siteConfig.pinned.showIcon && (
+                <Icon name={siteConfig.pinned.icon} class="inline mr-1 text-sm"></Icon>
+            )}
+            {siteConfig.pinned.showText && siteConfig.pinned.text}
+        </div>
+    )}
     <div class:list={["pl-6 md:pl-9 pr-6 md:pr-2 pt-6 md:pt-7 pb-6 relative", {"w-full md:w-[calc(100%_-_52px_-_12px)]": !hasCover, "w-full md:w-[calc(100%_-_var(--coverWidth)_-_12px)]": hasCover}]}>
         <a href={url}
            class="transition group w-full block font-bold mb-3 text-3xl text-90

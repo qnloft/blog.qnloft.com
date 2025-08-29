@@ -11,6 +11,7 @@ const postsCollection = defineCollection({
 		tags: z.array(z.string()).optional().default([]),
 		category: z.string().optional().nullable().default(""),
 		lang: z.string().optional().default(""),
+		pinned: z.number().optional().default(0), // 置顶标识：0为默认，1为置顶
 
 		/* For internal use */
 		prevTitle: z.string().default(""),

@@ -15,6 +15,13 @@ export const siteConfig: SiteConfig = {
 		hue: 50, // Default hue for the theme color, from 0 to 360. e.g. red: 0, teal: 200, cyan: 250, pink: 345
 		fixed: false, // Hide the theme color picker for visitors
 	},
+	// 置顶功能配置
+	pinned: {
+		icon: "material-symbols:push-pin", // 置顶图标，来自 https://icones.js.org
+		text: "置顶", // 置顶文字
+		showIcon: true, // 是否显示图标
+		showText: true, // 是否显示文字
+	},
 	carousel: {
 		enable: true,
 		height: "260px", // 轮播高度（默认更紧凑）
