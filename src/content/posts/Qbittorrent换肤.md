@@ -40,7 +40,7 @@ customSlug: yKCgvKzb
 遇事莫慌🤣，解决方式：需要先关闭Qbittorrent 的 Dokcer容器，然后将`/vol1/1000/docker/qbittorrent/config/qBittorrent/qBittorrent.conf` 文件中的
 `AlternativeUIEnabled`改为 `false`，删除 `RootFolder` 中的内容。修改后的文件如下：
 
-```conf
+```txt
 WebUI\AlternativeUIEnabled=false
 WebUI\RootFolder=
 ```
