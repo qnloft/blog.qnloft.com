@@ -28,9 +28,9 @@ PT下载主流工具是 `Transmission`、`QBittorrent`，一些NAS会自己封�
 #### 第二步：添加进行并配置
 
 对 `Qbittorrent`进行一些配置，首先是路径映射，一个是配置路径，一个是下载路径，注意大小写！网络这里选择 `host`，在环境配置中新增三个项目，照着抄啊，别写错了！！！
-![[Pasted image 20250217154427.png]]
-![[Pasted image 20250217154646.png]]
-![[Pasted image 20250217155601.png]]
+![Pasted image 20250217154427](https://oss.qnloft.com/ob-img/2025/08/30/Pasted%20image%2020250217154427.png)
+![Pasted image 20250217154646](https://oss.qnloft.com/ob-img/2025/08/30/Pasted%20image%2020250217154646.png)
+![Pasted image 20250217155601](https://oss.qnloft.com/ob-img/2025/08/30/Pasted%20image%2020250217155601.png)
 
 
 #### 第三步：启动镜像和寻找登录密码
@@ -38,7 +38,7 @@ PT下载主流工具是 `Transmission`、`QBittorrent`，一些NAS会自己封�
 启动`Qbittorrent`镜像，在日志中寻找登录的用户名和密码！
 
 飞牛：
-![[Pasted image 20250217155749.png]]
+![Pasted image 20250217155749](https://oss.qnloft.com/ob-img/2025/08/30/Pasted%20image%2020250217155749.png)
 
 极空间：
 ![Pasted image 20240321110911](https://oss.qnloft.com/ob-img/2024/03/27/Pasted%20image%2020240321110911.png)
@@ -119,5 +119,5 @@ services:
 ```
 
 
-![[Pasted image 20250426111033.png]]
-![[Pasted image 20250426111312.png]]
+![Pasted image 20250426111033](https://oss.qnloft.com/ob-img/2025/08/30/Pasted%20image%2020250426111033.png)
+![Pasted image 20250426111312](https://oss.qnloft.com/ob-img/2025/08/30/Pasted%20image%2020250426111312.png)
