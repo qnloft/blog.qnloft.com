@@ -1,9 +1,12 @@
 ---
 title: 零成本打造全网资源下载神器：三款免费工具解锁B站/抖音/m3u8视频下载备份
 published: 2025-02-26
-description: 今天分享一套零成本方案视频下载方案使  
-用GitHub开源工具+浏览器插件，实现抖音/B站/其他网站视频自动化备份，小白也能10分钟搞定！
-tags: [mediago, douyin_tiktok_api, 视频下载, docker]
+description: 今天分享一套零成本方案视频下载方案使用GitHub开源工具+浏览器插件，实现抖音/B站/其他网站视频自动化备份，小白也能10分钟搞定！
+tags:
+  - mediago
+  - douyin_tiktok_api
+  - 视频下载
+  - docker
 category: 工具软件
 draft: false
 pinned: 0
