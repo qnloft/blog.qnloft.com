@@ -1,4 +1,3 @@
----
 title: 零成本打造全网资源下载神器：三款免费工具解锁B站/抖音/m3u8视频下载备份
 published: 2025-02-26
 description: 今天分享一套零成本方案视频下载方案使用GitHub开源工具+浏览器插件，实现抖音/B站/其他网站视频自动化备份，小白也能10分钟搞定！
@@ -43,7 +42,7 @@ customSlug: PeLN0LIB
 
 ❶ 在 `chrome` 应用商店 搜索 
 
-![[Pasted image 20250216120018.png]]
+![Pasted image 20250216120018](https://oss.qnloft.com/ob-img/2025/08/30/Pasted%20image%2020250216120018.png)
 
 ❷ crx安装`chrome`插件
 - 访问 [github项目releases](https://github.com/xifangczy/cat-catch/releases) 下载对应浏览器 crx 文件;
@@ -55,7 +54,7 @@ customSlug: PeLN0LIB
 
 打开视频网站，点击浏览器右上角中的**猫爪插件**，在页面中找到嗅探出的视频，点击下载即可。
 
-![[Pasted image 20250216120740.png]]
+![Pasted image 20250216120740](https://oss.qnloft.com/ob-img/2025/08/30/Pasted%20image%2020250216120740.png)
 
 ---
 
@@ -70,9 +69,9 @@ customSlug: PeLN0LIB
 
 ❶ 使用镜像进行安装
 
-![[Pasted image 20250216125222.png]]
+![Pasted image 20250216125222](https://oss.qnloft.com/ob-img/2025/08/30/Pasted%20image%2020250216125222.png)
 
-![[Pasted image 20250216125648.png]]
+![Pasted image 20250216125648](https://oss.qnloft.com/ob-img/2025/08/30/Pasted%20image%2020250216125648.png)
 
 ❷ 使用 docker-compose.yml 进行安装
 
@@ -96,7 +95,7 @@ services:
 
 mediago 基本的使用，其实就非常简单了，安装完镜像后，使用浏览器打开页面，点击新建下载，选择下载的来源 `m3u8` or `哔哩哔哩`。即可进行下载了~！
 
-![[Pasted image 20250216130407.png]]
+![Pasted image 20250216130407](https://oss.qnloft.com/ob-img/2025/08/30/Pasted%20image%2020250216130407.png)
 
 🔜 再介绍一个高级玩法，`mediago +  猫爪` 浏览器插件，直接将 **视频下载到 NAS中**。
 
@@ -107,7 +106,7 @@ mediago 基本的使用，其实就非常简单了，安装完镜像后，使用
 http://192.168.9.100:8899?n=true&name=${title}&url=${url}&headers=${referer|exists:'Referer:*'|to:urlEncode}&type=m3u8&silent=true
 ```
 
-![[Pasted image 20250216131054.png]]
+![Pasted image 20250216131054](https://oss.qnloft.com/ob-img/2025/08/30/Pasted%20image%2020250216131054.png)
 
 ---
 
@@ -135,13 +134,13 @@ docker run -d --name douyin_tiktok_api -p 8005:80 \
 3. 如果构建失败，参考我的这篇文章  ，修改docker数据源。
 4. 使用浏览器打开 NAS_IP/8005，访问软件界面
 
-![[Pasted image 20250213111757.png]]
+![Pasted image 20250213111757](https://oss.qnloft.com/ob-img/2025/08/30/Pasted%20image%2020250213111757.png)
 
-![[Pasted image 20250213111946.png]]
+![Pasted image 20250213111946](https://oss.qnloft.com/ob-img/2025/08/30/Pasted%20image%2020250213111946.png)
 
-![[Pasted image 20250213133552.png]]
+![Pasted image 20250213133552](https://oss.qnloft.com/ob-img/2025/08/30/Pasted%20image%2020250213133552.png)
 
-![[Pasted image 20250213144404.png]]
+![Pasted image 20250213144404](https://oss.qnloft.com/ob-img/2025/08/30/Pasted%20image%2020250213144404.png)
 
 ---
 
