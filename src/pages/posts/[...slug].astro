@@ -1,0 +1,24 @@
+---
+export async function getStaticPaths() {
+	// 获取所有博客文章
+	const { getSortedPosts } = await import("../../utils/content-utils");
+	const blogEntries = await getSortedPosts();
+
+	return blogEntries.map((entry) => ({
+		params: { slug: entry.slug },
+		props: {
+			slug: entry.data.customSlug || entry.slug,
+			entry,
+		},
+	}));
+}
+
+const { slug } = Astro.props;
+---
+
+<meta http-equiv="refresh" content={`0;url=/archives/${slug}`} />
+<script is:inline define:vars={{ slug }}>
+	window.location.href = `/archives/${slug}`;
+</script>
+
+<p>正在重定向到 <a href={`/archives/${slug}`}>/archives/${slug}</a>...</p>
